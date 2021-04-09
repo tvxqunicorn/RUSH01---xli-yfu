@@ -6,15 +6,15 @@
 #    By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 21:41:31 by xli               #+#    #+#              #
-#    Updated: 2021/04/09 22:52:21 by xli              ###   ########lyon.fr    #
+#    Updated: 2021/04/09 23:25:24 by xli              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ofc
+NAME = rush
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I includes
+CFLAGS = -Wall -Wextra -Werror -I includes -fsanitize=address -g
 
 SRCS = ./srcs/main.c ./srcs/parse.c
 
