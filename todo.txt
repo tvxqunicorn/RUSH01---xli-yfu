@@ -4,3 +4,4 @@
 4. Will the map be in stdin or a file ?
 5. Need to print the '\n' at the end of map ?
 6. remember to free everything (prevent leaks)
+7. Is the map a square ?
