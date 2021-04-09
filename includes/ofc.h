@@ -6,12 +6,13 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:56:47 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/09 22:06:27 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/09 22:27:17 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OFC_H
 # define OFC_H
 # include "../libft/libft.h"
+# include "../libft/get_next_line.h"
 void	parse(int *n, char *c, int ***map);
 #endif

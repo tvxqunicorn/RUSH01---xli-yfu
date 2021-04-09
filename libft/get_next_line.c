@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:08:32 by yfu               #+#    #+#             */
-/*   Updated: 2021/01/15 17:08:47 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/09 22:32:52 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		ft_fill(char **line, t_lst *temp)
 	int		idx[2];
 	t_str	*str;
 
-	if (!(*line = ft_malloc(((temp->len) - (temp->idx) + 1), sizeof(char))))
+	if (!(*line = malloc(((temp->len) - (temp->idx) + 1) * sizeof(char))))
 		return (-1);
 	idx[0] = temp->idx;
 	idx[1] = 0;
