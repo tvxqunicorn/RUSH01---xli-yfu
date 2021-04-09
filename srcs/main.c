@@ -6,14 +6,22 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/09 21:29:52 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/09 22:04:59 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ofc.h"
 
-#define MIN(a,b) (a < b ? a : b)
+int	main(void)
+{
+	int		n;
+	char	c;
+	int		**map;
+	parse(&n, &c, &map);
+	
+}
 
+/*
 int	main()
 {
 	int n; // deal with n == 0 ? n < 0 ?
@@ -51,3 +59,4 @@ int	main()
 		printf("\n");
 	}
 }
+*/
