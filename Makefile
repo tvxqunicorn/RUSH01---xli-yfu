@@ -6,7 +6,7 @@
 #    By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 21:41:31 by xli               #+#    #+#              #
-#    Updated: 2021/04/09 22:20:56 by xli              ###   ########lyon.fr    #
+#    Updated: 2021/04/09 22:36:08 by xli              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,18 @@ LIB = libft/
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJS)
-		make -C $(LIB)libft
+$(NAME): $(INCLUDE) $(OBJS) $(SRCS)
+		make -C $(LIB)
 		$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
 all : $(NAME)
 
 clean :
-	make clean -C $(LIB)libft
+	make clean -C $(LIB)
 	rm -rf $(OBJS)
 
 fclean :
-	make fclean -C $(LIB)libft
+	make fclean -C $(LIB)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 
