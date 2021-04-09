@@ -6,7 +6,7 @@
 #    By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 21:41:31 by xli               #+#    #+#              #
-#    Updated: 2021/04/09 22:36:08 by xli              ###   ########lyon.fr    #
+#    Updated: 2021/04/09 22:52:21 by xli              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,13 @@ INCLUDE = ./includes/ofc.h
 
 LIB = libft/
 
+LIBFLAGS = -L $(LIB) -lft
+
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(INCLUDE) $(OBJS) $(SRCS)
 		make -C $(LIB)
-		$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
+		$(CC) $(OBJS) $(CFLAGS) $(LIBFLAGS) -o $(NAME)
 
 all : $(NAME)
 
