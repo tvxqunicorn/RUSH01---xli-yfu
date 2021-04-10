@@ -5,35 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 13:24:57 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 10:34:22 by xli              ###   ########lyon.fr   */
+/*   Created: 2020/11/24 13:58:58 by xli               #+#    #+#             */
+/*   Updated: 2021/04/10 11:33:56 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
-	long long int	ct[3];
+	long long int	i;
+	long long int	x;
+	int				neg;
 
-	if (!str || str[0] == 0)
-		return (0);
-	if (ft_isspace(*str))
-		return (ft_atoi(str + 1));
-	ct[2] = 1;
-	if (str[0] == '+')
-		ct[0] = 0;
-	if (str[0] == '-')
+	i = 0;
+	x = 0;
+	neg = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		ct[0] = -1;
-		ct[2] = -1;
+		if (str[i] == '-')
+			neg = neg * -1;
+		i++;
 	}
-	ct[1] = 0;
-	while (str[++ct[0]])
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[ct[0]] < '0' || str[ct[0]] > '9')
-			return (ct[1] * ct[2]);
-		ct[1] = 10 * ct[1] + str[ct[0]] - '0';
+		x = x * 10 + (str[i] - '0');
+		i++;
 	}
-	return (ct[1] * ct[2]);
+	return (neg * x);
 }
