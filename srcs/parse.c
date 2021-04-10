@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 14:20:11 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 15:37:46 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	print_ans(int n, char c, char **map, int target[3])
 		{
 			if (ct[0] > target[0] - target[2] && ct[0] <= target[0]
 				&& ct[1] > target[1] - target[2] && ct[1] <= target[1])
-				ft_putchar_fd(c, 1);
+				write(1, &c, 1);
 			else
-				ft_putchar_fd(map[ct[0]][ct[1]], 1);
+				write(1, &(map[ct[0]][ct[1]]), 1);
 		}
-		ft_putendl_fd("", 1);
+		write(1, "\n", 1);
 	}
 }
