@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 14:10:29 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 15:23:00 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	solve(int n, char **map, int target[3])
 	while (++ct[0] < n)
 		dp[ct[0]] = malloc(n * sizeof(int));
 	ct[0] = -1;
-	target[2] = 0;
 	while (++ct[0] < n)
 	{
 		dp[0][ct[0]] = 1;
@@ -71,6 +70,9 @@ int	main(void)
 		ft_putendl_fd("", 1);
 		return (0);
 	}
+	ct[0] = 0;
+	ct[1] = 0;
+	ct[2] = 1;
 	solve(n, map, ct);
 	print_ans(n, c, map, ct);
 	ct[0] = -1;
