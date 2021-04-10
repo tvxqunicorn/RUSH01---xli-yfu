@@ -14,7 +14,7 @@ NAME = rush
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I includes -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -I includes -g
 
 SRCS = ./srcs/main.c ./srcs/parse.c
 
@@ -31,6 +31,9 @@ OBJS = $(SRCS:.c=.o)
 $(NAME): $(INCLUDE) $(OBJS) $(SRCS)
 		make -C $(LIB)
 		$(CC) $(OBJS) $(CFLAGS) $(LIBFLAGS) -o $(NAME)
+
+%.o : %.c $(INCLUDE) $(LIB)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 

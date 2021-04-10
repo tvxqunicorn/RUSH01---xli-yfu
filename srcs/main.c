@@ -6,13 +6,13 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 13:16:48 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 14:10:29 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ofc.h"
 
-void	sub_solve(int ct[2], int **dp, int **map, int target[3])
+void	sub_solve(int ct[2], int **dp, char **map, int target[3])
 {
 	if (map[ct[0]][ct[1]] == map[ct[0] - 1][ct[1]]
 		&& map[ct[0]][ct[1]] == map[ct[0]][ct[1] - 1]
@@ -29,7 +29,7 @@ void	sub_solve(int ct[2], int **dp, int **map, int target[3])
 	}
 }
 
-void	solve(int n, int **map, int target[3])
+void	solve(int n, char **map, int target[3])
 {
 	int	**dp;
 	int	ct[2];
@@ -62,7 +62,7 @@ int	main(void)
 {
 	int		n;
 	char	c;
-	int		**map;
+	char	**map;
 	int		ct[3];
 
 	parse(&n, &c, &map);
