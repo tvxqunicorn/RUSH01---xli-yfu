@@ -3,36 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 11:43:22 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/22 11:43:26 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/12/10 13:49:25 by xli               #+#    #+#             */
+/*   Updated: 2020/12/10 14:07:51 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_lstdelone(t_list **head, t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*temp;
-
-	if (!lst || !head)
+	if (!lst)
 		return ;
-	temp = *head;
-	if (temp == lst)
-		*head = temp->next;
-	else
-	{
-		while (temp && temp->next != lst)
-			temp = temp->next;
-		if (!temp)
-		{
-			ft_putstr_fd("ERROR_IN_FT_LSTDELONE\n", 1);
-			return ;
-		}
-		temp->next = lst->next;
-	}
-	if (del)
-		del(lst->content);
-	ft_free(lst);
+	del(lst->content);
+	free(lst);
 }

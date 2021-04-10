@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minmax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 00:04:57 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/05 15:48:29 by yfu              ###   ########lyon.fr   */
+/*   Created: 2021/03/05 10:38:36 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 15:12:06 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	ft_min(int a, int b)
 {
-	return (a < b ? a : b);
+	if (a < b)
+		return (a);
+	return (b);
 }
 
 int	ft_max(int a, int b)
 {
-	return (a > b ? a : b);
+	if (a > b)
+		return (a);
+	return (b);
 }

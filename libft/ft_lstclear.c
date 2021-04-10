@@ -3,33 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 11:43:16 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/22 11:43:20 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/12/10 14:09:31 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:18:09 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*temp;
-	t_list	*dd;
+	t_list	*element;
+	t_list	*next;
 
-	if (!(lst))
-	{
-		ft_putstr_fd("ERROR_IN_FT_LSTCLEAR\n", 1);
+	if (!lst)
 		return ;
-	}
-	temp = *lst;
-	*lst = NULL;
-	while (temp)
+	element = *lst;
+	while (element)
 	{
-		if (del)
-			del(temp->content);
-		dd = temp;
-		temp = temp->next;
-		ft_free(dd);
+		next = element->next;
+		ft_lstdelone(element, del);
+		element = next;
 	}
+	*lst = NULL;
 }

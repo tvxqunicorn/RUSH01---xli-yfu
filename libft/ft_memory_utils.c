@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memory_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 00:04:33 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/06 19:02:15 by yfu              ###   ########lyon.fr   */
+/*   Created: 2021/03/05 10:00:11 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 09:14:15 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_malloc(size_t elem_cnt, size_t elem_size)
+void	*ft_malloc(size_t count, size_t size)
 {
-	return (ft_memory(elem_cnt, elem_size, NULL, push));
+	return (ft_memory(count, size, NULL, push));
 }
 
-void			ft_free(void *del)
+void	ft_free(void *del)
 {
 	ft_memory(0U, 0U, del, pop);
 }
 
-void			ft_free_all(void)
+void	ft_free_all(void)
 {
 	ft_memory(0U, 0U, NULL, clear);
 }

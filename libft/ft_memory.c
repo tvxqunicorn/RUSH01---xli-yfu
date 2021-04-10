@@ -3,41 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 08:19:43 by yfu               #+#    #+#             */
-/*   Updated: 2021/01/29 08:19:46 by yfu              ###   ########lyon.fr   */
+/*   Created: 2021/03/05 10:04:02 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:21:47 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** example :
-** int *ptr = ft_memory(5, sizeof(int), NULL, push);
-** ft_memory(0, 0, ptr, pop);
-** ft_memory(0, 0, NULL, clear);
-*/
-
 static t_list	*ft_lstnew_2(void *content)
 {
-	t_list	*nw;
+	t_list	*elem;
 
-	if (!(nw = (t_list*)malloc(sizeof(t_list))))
-	{
-		ft_putstr_fd("ERROR_IN_FT_LSTNEW_2\n", 1);
+	elem = (t_list *)malloc(sizeof(t_list));
+	if (elem == NULL)
 		return (NULL);
-	}
-	nw->content = content;
-	nw->next = NULL;
-	return (nw);
+	elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }
 
-static void		ft_lstdelone_2(t_list **head, t_list *lst, void (*del)(void *))
+static	void	ft_lstdelone_2(t_list **head, t_list *lst, void (*del)(void *))
 {
 	t_list	*temp;
 
-	if (!lst || !head)
+	if (!head || !lst)
 		return ;
 	temp = *head;
 	if (temp == lst)
@@ -47,10 +38,7 @@ static void		ft_lstdelone_2(t_list **head, t_list *lst, void (*del)(void *))
 		while (temp && temp->next != lst)
 			temp = temp->next;
 		if (!temp)
-		{
-			ft_putstr_fd("ERROR_IN_FT_LSTDELONE_2\n", 1);
 			return ;
-		}
 		temp->next = lst->next;
 	}
 	if (del)
@@ -58,50 +46,43 @@ static void		ft_lstdelone_2(t_list **head, t_list *lst, void (*del)(void *))
 	free(lst);
 }
 
-static void		*ft_calloc_2(size_t elementcount, size_t elementsize)
+static	void	*ft_calloc_2(size_t count, size_t size)
 {
-	void	*ans;
+	void	*dst;
 
-	if (!(ans = malloc(elementcount * elementsize)))
-	{
-		ft_putstr_fd("ERROR_IN_FT_CALLOC_2\n", 1);
+	dst = malloc(count * size);
+	if (dst == NULL)
 		return (NULL);
-	}
-	ft_memset(ans, 0, elementcount * elementsize);
-	return (ans);
+	ft_memset(dst, 0, count * size);
+	return (dst);
 }
 
-static void		ft_lstclear_2(t_list **lst, void (*del)(void *))
+static	void	ft_lstclear_2(t_list **lst, void (*del)(void *))
 {
 	t_list	*temp;
-	t_list	*dd;
+	t_list	*next;
 
-	if (!(lst))
-	{
-		ft_putstr_fd("ERROR_IN_FT_LSTCLEAR_2\n", 1);
+	if (!lst)
 		return ;
-	}
 	temp = *lst;
-	*lst = NULL;
 	while (temp)
 	{
-		if (del)
-			del(temp->content);
-		dd = temp;
-		temp = temp->next;
-		free(dd);
+		next = temp->next;
+		ft_lstdelone(temp, del);
+		temp = next;
 	}
+	*lst = NULL;
 }
 
-void			*ft_memory(size_t elem_cnt,
-size_t elem_size, void *del, t_memory type)
+void	*ft_memory(size_t count, size_t size, void *del, t_memory type)
 {
 	static t_list	*head;
 	void			*new_mem;
 
 	if (type == push)
 	{
-		if (!(new_mem = ft_calloc_2(elem_cnt, elem_size)))
+		new_mem = ft_calloc_2(count, size);
+		if (new_mem == NULL)
 			ft_putstr_fd("ERROR_IN_FT_MEMORY_0\n", 1);
 		else if (!(ft_lstadd_front(&head, ft_lstnew_2(new_mem))))
 			ft_putstr_fd("ERROR_IN_FT_MEMORY_1\n", 1);

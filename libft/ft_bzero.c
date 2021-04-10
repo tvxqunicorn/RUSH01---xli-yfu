@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 15:02:39 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/12 13:21:27 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/11/24 11:05:55 by xli               #+#    #+#             */
+/*   Updated: 2020/12/08 16:27:32 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	size_t			i;
+	unsigned char	*d;
+
+	i = 0;
+	d = (unsigned char *)s;
+	while (i < n)
+	{
+		d[i] = 0;
+		i++;
+	}
 }

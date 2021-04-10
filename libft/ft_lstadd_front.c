@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 11:34:30 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/22 11:43:15 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/12/10 11:25:19 by xli               #+#    #+#             */
+/*   Updated: 2021/03/05 11:19:36 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!new || !lst)
-	{
-		ft_putstr_fd("ERROR_IN_FT_LSTADD_FRONT\n", 1);
+	if (!lst || !new)
 		return (0);
-	}
 	if (!*lst)
 	{
 		*lst = new;

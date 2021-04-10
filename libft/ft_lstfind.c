@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 08:19:59 by yfu               #+#    #+#             */
-/*   Updated: 2021/01/29 08:19:59 by yfu              ###   ########lyon.fr   */
+/*   Created: 2021/03/05 10:16:39 by xli               #+#    #+#             */
+/*   Updated: 2021/03/08 18:11:56 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list			*ft_lstfind(t_list *head, void *target)
+t_list	*ft_lstfind(t_list *head, t_list *target)
 {
 	while (head)
 	{

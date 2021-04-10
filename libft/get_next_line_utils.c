@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:08:54 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/09 22:34:21 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 09:56:47 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	*ft_substr2(char const *s, int start, int len)
 	char	*ans;
 	int		ct;
 
-	if (!(ans = malloc((len + 1) * sizeof(char))))
+	ans = malloc((len + 1) * sizeof(char));
+	if (ans == NULL)
 		return (NULL);
 	ct = 0;
 	while (ct < len && s[ct] != '\0')
@@ -29,17 +30,19 @@ char	*ft_substr2(char const *s, int start, int len)
 	return (ans);
 }
 
-int		ft_str_add(t_lst *dst, char *s, int len)
+int	ft_str_add(t_lst *dst, char *s, int len)
 {
 	t_str	*str;
 	t_str	*temp;
 	int		idx;
 
-	if (len < 0 || !s || !(str = malloc(1 * sizeof(t_str))))
+	str = malloc(1 * sizeof(t_str));
+	if (len < 0 || !s || !str)
 		return (-1);
 	idx = -1;
 	str->next = 0;
-	if (!(str->s = malloc((len + 1) * sizeof(char))))
+	str->s = malloc((len + 1) * sizeof(char));
+	if (str->s == NULL)
 		return (-1);
 	while (++idx < len)
 		str->s[idx] = s[idx];
@@ -62,7 +65,8 @@ t_lst	*ft_lst_add(t_lst **dst, int fd)
 {
 	t_lst	*temp;
 
-	if (!(temp = malloc(1 * sizeof(t_lst))))
+	temp = malloc(1 * sizeof(t_lst));
+	if (temp == NULL)
 		return (NULL);
 	temp->str = 0;
 	temp->len = 0;
@@ -79,7 +83,7 @@ t_lst	*ft_lst_add(t_lst **dst, int fd)
 	return (temp);
 }
 
-int		ft_clean_lst(t_lst *lst)
+int	ft_clean_lst(t_lst *lst)
 {
 	t_str	*temp;
 
@@ -96,7 +100,7 @@ int		ft_clean_lst(t_lst *lst)
 	return (0);
 }
 
-int		ft_del_lst(t_lst *target, t_lst **head, int *res)
+int	ft_del_lst(t_lst *target, t_lst **head, int *res)
 {
 	t_lst	*temp;
 

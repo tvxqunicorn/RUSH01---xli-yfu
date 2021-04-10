@@ -3,52 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 11:42:56 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/22 11:43:04 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/12/08 11:55:29 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:39:08 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_cnt(int n)
+static	int	ft_nb_len(long n)
 {
-	int	ans;
+	int	len;
 
-	ans = n < 0 ? 1 : 0;
-	while (n != 0)
+	len = 1;
+	if (n < 0)
 	{
-		ans++;
-		n /= 10;
+		n = -1 * n;
+		len++;
 	}
-	return (ans);
+	while (n >= 10)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char	*ans;
-	int		ct;
+	long	nb;
+	int		len;
+	char	*str;
 
-	ans = NULL;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return (ft_strdup("0"));
-	ct = ft_cnt(n);
-	if (!(ans = ft_memory(ct + 1, sizeof(char), 0, push)))
-	{
-		ft_putstr_fd("ERROR_IN_FT_ITOA\n", 1);
+	nb = n;
+	len = ft_nb_len(nb);
+	str = ft_malloc(len + 1, sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	}
-	if (n < 0)
-		ans[0] = '-';
-	ans[ct] = '\0';
-	n = n < 0 ? -1 * n : n;
-	while (n > 0)
+	str[len--] = '\0';
+	if (nb == 0)
+		str[0] = '0';
+	if (nb < 0)
 	{
-		ans[--ct] = n % 10 + '0';
-		n /= 10;
+		str[0] = '-';
+		nb = -1 * nb;
 	}
-	return (ans);
+	while (nb > 0)
+	{
+		str[len] = '0' + (nb % 10);
+		nb = nb / 10;
+		len--;
+	}
+	return (str);
 }

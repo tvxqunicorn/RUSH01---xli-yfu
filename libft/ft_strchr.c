@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 14:47:31 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/16 16:02:20 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/11/23 14:48:02 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:26:44 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	ct;
+	int	i;
 
-	if (!s)
-		return (NULL);
-	ct = 0;
-	while (s[ct])
+	i = 0;
+	while (s[i])
 	{
-		if (s[ct] == (char)c)
-			return ((char*)s + ct);
-		ct++;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	if (s[ct] == (char)c)
-		return ((char*)s + ct);
-	return (0);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

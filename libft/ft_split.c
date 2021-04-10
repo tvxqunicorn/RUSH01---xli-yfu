@@ -3,79 +3,95 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 12:38:31 by yfu               #+#    #+#             */
-/*   Updated: 2020/12/22 12:38:52 by yfu              ###   ########lyon.fr   */
+/*   Created: 2020/12/10 10:19:35 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:40:18 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_cnt(char const *s, char c)
+static	unsigned int	ft_nb_str(char const *s, char c)
 {
-	int		ct[2];
+	unsigned int	i;
+	unsigned int	nb_str;
 
-	if (!s)
-		return (-1);
-	ct[0] = 0;
-	ct[1] = 0;
-	while (s[ct[0]])
-	{
-		while (s[ct[0]] && s[ct[0]] == c)
-			ct[0]++;
-		if (!s[ct[0]])
-			break ;
-		while (s[ct[0]] && s[ct[0]] != c)
-			ct[0]++;
-		ct[1]++;
-	}
-	return (ct[1]);
-}
-
-static int		ft_sub(char **ans, const char *s, int *ct)
-{
-	if (!(ans[ct[1]++] = ft_substr(s, ct[0] - ct[2], ct[2])))
+	if (!s[0])
 		return (0);
-	return (1);
+	i = 0;
+	nb_str = 0;
+	while (s[i] && s[i] == c)
+		i++;
+	while (s[i])
+	{
+		nb_str++;
+		while (s[i] && s[i] != c)
+			i++;
+		while (s[i] && s[i] == c)
+			i++;
+	}
+	return (nb_str);
 }
 
-static char		**ft_free_sub(char **ans)
+static	void	ft_next_str(char **next_str, unsigned int *next_str_len,
+						char c)
 {
-	int	ct;
+	unsigned int	i;
 
-	ct = -1;
-	while (ans[++ct])
-		ft_memory(0, 0, ans[ct], pop);
-	ft_memory(0, 0, ans, pop);
+	*next_str += *next_str_len;
+	*next_str_len = 0;
+	i = 0;
+	while (**next_str && **next_str == c)
+		(*next_str)++;
+	while (*(*next_str + i))
+	{
+		if (*(*next_str + i) == c)
+			return ;
+		(*next_str_len)++;
+		i++;
+	}
+}
+
+static	char	**ft_freeee(char **tab)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 	return (NULL);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**ans;
-	int		sz;
-	int		ct[3];
+	char			**tab;
+	char			*next_str;
+	unsigned int	next_str_len;
+	unsigned int	nb_str;
+	unsigned int	i;
 
-	sz = ft_cnt(s, c);
-	if (!s || !(ans = ft_memory(sz + 1, sizeof(char*), 0, push)))
+	if (!s)
 		return (NULL);
-	ct[0] = 0;
-	ct[1] = 0;
-	while (s[ct[0]])
+	nb_str = ft_nb_str(s, c);
+	tab = (char **)malloc(sizeof(char *) * (nb_str + 1));
+	if (tab == NULL)
+		return (NULL);
+	i = 0;
+	next_str = (char *)s;
+	next_str_len = 0;
+	while (i++ < nb_str)
 	{
-		ct[2] = 0;
-		while (s[ct[0]] && s[ct[0]] == c)
-			ct[0]++;
-		while (s[ct[0]] && s[ct[0]] != c)
-		{
-			ct[0]++;
-			ct[2]++;
-		}
-		if (ct[2] > 0)
-			if (!ft_sub(ans, s, (int*)ct))
-				return (ft_free_sub(ans));
+		ft_next_str(&next_str, &next_str_len, c);
+		tab[i] = (char *)malloc(sizeof(char) * (next_str_len + 1));
+		if (tab[i] == NULL)
+			return (ft_freeee(tab));
+		ft_strlcpy(tab[i], next_str, next_str_len + 1);
 	}
-	ans[ct[1]] = NULL;
-	return (ans);
+	tab[i] = NULL;
+	return (tab);
 }

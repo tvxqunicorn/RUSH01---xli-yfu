@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:09:14 by yfu               #+#    #+#             */
-/*   Updated: 2021/01/15 17:09:29 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 09:52:45 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct	s_str
+typedef struct s_str
 {
 	char			*s;
 	struct s_str	*next;
 }				t_str;
 
-typedef struct	s_lst
+typedef struct s_lst
 {
 	t_str			*str;
 	int				len;
