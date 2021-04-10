@@ -5,3 +5,4 @@
 5. Need to print the '\n' at the end of map ?
 6. remember to free everything (prevent leaks)
 7. Is the map a square ?
+8. what to do if error ? (malloc fail, read fail, n not valid, second line too long, map not valid ...)
