@@ -3,35 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 16:29:29 by xli               #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/04/10 12:34:51 by yfu              ###   ########lyon.fr   */
+=======
 /*   Updated: 2021/04/10 11:29:49 by xli              ###   ########lyon.fr   */
+>>>>>>> 4ccae13a3306bc01095bcb186addc18c5cca7507
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-# include <stddef.h>
-# include "get_next_line.h"
+# include <stdlib.h>
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-typedef enum e_memory
-{
-	push,
-	pop,
-	clear
-}					t_memory;
-
+<<<<<<< HEAD
+int		ft_atoi(char *str);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+int		ft_isspace(char c);
+=======
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
@@ -88,5 +86,6 @@ int					ft_max(int a, int b);
 double				ft_atodouble(char **str);
 double				ft_neg_double(char **str, char *msg);
 int					ft_isspace(char c);
+>>>>>>> 4ccae13a3306bc01095bcb186addc18c5cca7507
 
 #endif
