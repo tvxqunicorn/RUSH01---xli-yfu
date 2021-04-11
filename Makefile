@@ -16,33 +16,26 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I includes -g
 
-SRCS = ./srcs/main.c ./srcs/parse.c
+SRCS = ./srcs/main.c ./srcs/parse.c	./srcs/ft_minmax.c
 
 HEADER = ./includes/
 
 INCLUDE = ./includes/ofc.h
 
-LIB = libft/
-
-LIBFLAGS = -L $(LIB) -lft
-
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(INCLUDE) $(OBJS) $(SRCS)
-		make -C $(LIB)
-		$(CC) $(OBJS) $(CFLAGS) $(LIBFLAGS) -o $(NAME)
+		$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
-%.o : %.c $(INCLUDE) $(LIB)
+%.o : %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 
 clean :
-	make clean -C $(LIB)
 	rm -rf $(OBJS)
 
 fclean :
-	make fclean -C $(LIB)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 

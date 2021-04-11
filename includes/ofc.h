@@ -12,10 +12,13 @@
 
 #ifndef OFC_H
 # define OFC_H
-# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
 void	parse(int *n, char *c, char ***map);
 void	solve(int n, char **map, int target[3]);
 void	print_ans(int n, char c, char **map, int target[3]);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
 
 #endif

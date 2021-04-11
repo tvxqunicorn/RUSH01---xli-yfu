@@ -16,8 +16,6 @@ COPY ./includes/. ./includes/.
 
 COPY ./Makefile .
 
-COPY ./libft/ ./libft/.
-
 RUN make re
 
 ARG arg
