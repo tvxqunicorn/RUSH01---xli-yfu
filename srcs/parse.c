@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/11 16:47:22 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/11 17:35:08 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	read_int(void)
 
 void	parse(int *n, char *c, char ***map)
 {
-	int		ct;
+	int		ct[2];
 	char	a;
 	char	*t;
 
@@ -40,17 +40,18 @@ void	parse(int *n, char *c, char ***map)
 	*map = malloc(*n * sizeof(char *));
 	**map = malloc(*n * (*n + 1) * sizeof(char));
 	t = map[0][0];
-	ct = read(0, t, *n * (*n + 1));
-	while (ct > 0)
+	ct[1] = *n * (1 + *n) - 1;
+	while (ct[1] > 0)
 	{
-		t += ct;
-		ct = read(0, t, *n * (*n + 1));
+		ct[0] = read(0, t, ct[1]);
+		t += ct[0];
+		ct[1] -= ct[0];
 	}
 	t = map[0][0] + 1 + *n;
-	ct = 0;
-	while (++ct < *n)
+	ct[0] = 0;
+	while (++ct[0] < *n)
 	{
-		map[0][ct] = t;
+		map[0][ct[0]] = t;
 		t += 1 + *n;
 	}
 }
