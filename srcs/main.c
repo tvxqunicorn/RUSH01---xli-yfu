@@ -27,8 +27,9 @@ void	sub_solve(int *dp, char *map, int target[2], int idx[4])
 			if (map[idx[1]] == map[idx[1] - 1]
 				&& map[idx[1]] == map[idx[1] - idx[3]]
 				&& map[idx[1]] == map[idx[1] - idx[3] - 1])
-				dp[idx[0]] = 1 + ft_min(dp[idx[0] - 1], ft_min(
-							dp[idx[0] - idx[2]], dp[idx[0] - idx[2] - 1]));
+				dp[idx[0]] = 1 + ft_min(dp[idx[0] - 1],
+						dp[idx[0] - idx[2]],
+						dp[idx[0] - idx[2] - 1]);
 			else
 				dp[idx[0]] = 1;
 			if (dp[idx[0]] > target[1])

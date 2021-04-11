@@ -12,16 +12,16 @@
 
 #include "ofc.h"
 
-int	ft_min(int a, int b)
+int	ft_min(int a, int b, int c)
 {
 	if (a < b)
-		return (a);
-	return (b);
-}
-
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
+	{
+		if (a < c)
+			return (a);
+		else
+			return (c);
+	}
+	if (b < c)
+		return (b);
+	return (c);
 }

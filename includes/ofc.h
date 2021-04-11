@@ -17,7 +17,6 @@
 
 void	parse(int *n, char *c, char **map);
 void	print_ans(int n, char c, char *map, int target[2]);
-int		ft_min(int a, int b);
-int		ft_max(int a, int b);
+int		ft_min(int a, int b, int c);
 
 #endif
