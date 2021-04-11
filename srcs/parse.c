@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 15:37:46 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/11 16:47:22 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	read_int(void)
 	ans = 0;
 	while (1)
 	{
-		if (read(0, &c, 1) != 1)
-			return (ans);
+		read(0, &c, 1);
 		if (c == '\n')
 			return (ans);
 		ans = 10 * ans + c - '0';
@@ -29,52 +28,52 @@ int	read_int(void)
 	return (ans);
 }
 
-void	get_line(int n, char *line)
-{
-	while (1)
-	{
-		if (read(0, line, 1) != 1)
-			return ;
-		if (line[0] != '\n')
-			break ;
-	}
-	if (n > 1)
-		read(0, line + 1, n - 1);
-}
-
 void	parse(int *n, char *c, char ***map)
 {
-	int		ct[2];
+	int		ct;
+	char	a;
+	char	*t;
 
 	*n = read_int();
-	if (*n <= 0)
-		return ;
 	read(0, c, 1);
+	read(0, &a, 1);
 	*map = malloc(*n * sizeof(char *));
-	ct[0] = -1;
-	while (++ct[0] < *n)
-		map[0][ct[0]] = malloc(*n * sizeof(char));
-	ct[0] = -1;
-	while (++ct[0] < *n)
-		get_line(*n, map[0][ct[0]]);
+	**map = malloc(*n * (*n + 1) * sizeof(char));
+	t = map[0][0];
+	ct = read(0, t, *n * (*n + 1));
+	while (ct > 0)
+	{
+		t += ct;
+		ct = read(0, t, *n * (*n + 1));
+	}
+	t = map[0][0] + 1 + *n;
+	ct = 0;
+	while (++ct < *n)
+	{
+		map[0][ct] = t;
+		t += 1 + *n;
+	}
 }
 
 void	print_ans(int n, char c, char **map, int target[3])
 {
-	int	ct[2];
+	int		ct[2];
+	char	*t;
 
-	ct[0] = -1;
-	while (++ct[0] < n)
+	ct[0] = target[0] - target[2];
+	while (++ct[0] <= target[0])
 	{
-		ct[1] = -1;
-		while (++ct[1] < n)
-		{
-			if (ct[0] > target[0] - target[2] && ct[0] <= target[0]
-				&& ct[1] > target[1] - target[2] && ct[1] <= target[1])
-				write(1, &c, 1);
-			else
-				write(1, &(map[ct[0]][ct[1]]), 1);
-		}
-		write(1, "\n", 1);
+		ct[1] = target[1] - target[2];
+		while (++ct[1] <= target[1])
+			map[ct[0]][ct[1]] = c;
 	}
+	ct[0] = n * (n + 1) - 1;
+	t = map[0];
+	while (ct[0] > 0)
+	{
+		ct[1] = write(1, t, ct[0]);
+		t += ct[1];
+		ct[0] -= ct[1];
+	}
+	write(1, "\n", 1);
 }

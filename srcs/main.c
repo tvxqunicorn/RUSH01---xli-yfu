@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 15:35:22 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/11 16:47:16 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,11 @@ int	main(void)
 	int		ct[3];
 
 	parse(&n, &c, &map);
-	if (n <= 0)
-	{
-		write(1, "\n", 1);
-		return (0);
-	}
 	ct[0] = 0;
 	ct[1] = 0;
 	ct[2] = 1;
 	solve(n, map, ct);
 	print_ans(n, c, map, ct);
-	ct[0] = -1;
-	while (++ct[0] < n)
-		free(map[ct[0]]);
+	free(map[0]);
 	free(map);
 }
