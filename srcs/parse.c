@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/12 23:01:41 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 23:21:12 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ unsigned char *map, unsigned int target[2])
 	unsigned char	*t;
 
 	ct[0] = -1;
+	t = map + target[0] + 1;
 	while (++ct[0] < target[1])
 	{
 		ct[1] = -1;
 		while (++ct[1] < target[1])
-			map[target[0] - ct[0] * (n + 1) - ct[1]] = c;
+			*(--t) = c;
+		t -= n + 1 - target[1];
 	}
 	ct[0] = n * (n + 1) - 1;
 	t = map;
