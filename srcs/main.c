@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/12 22:56:59 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 00:48:15 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,22 @@ unsigned int target[2], unsigned int idx[2])
 void	solve(unsigned int n, unsigned char *map, unsigned int target[2])
 {
 	unsigned int	*dp;
-	unsigned int	ct[2];
+	unsigned int	*temp[2];
 	unsigned int	idx[2];
 
 	dp = malloc(n * n * sizeof(unsigned int));
-	ct[0] = -1;
-	while (++ct[0] < n)
-	{
-		dp[ct[0]] = 1;
-		dp[ct[0] * n] = 1;
-	}
+	temp[0] = dp;
+	temp[1] = dp;
 	idx[0] = n;
 	idx[1] = n + 1;
-	sub_solve(dp + n + 1, map + n + 2, target, idx);
+	while (n-- > 0)
+	{
+		*temp[0] = 1;
+		++temp[0];
+		*temp[1] = 1;
+		temp[1] += idx[0];
+	}
+	sub_solve(dp + idx[0] + 1, map + idx[1] + 1, target, idx);
 	free(dp);
 }
 
