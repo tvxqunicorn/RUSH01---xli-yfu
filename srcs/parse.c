@@ -6,16 +6,16 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/11 21:23:40 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 23:01:41 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ofc.h"
 
-int	read_int(void)
+unsigned int	read_int(void)
 {
-	int		ans;
-	char	c;
+	unsigned int	ans;
+	unsigned char	c;
 
 	ans = 0;
 	while (1)
@@ -28,14 +28,14 @@ int	read_int(void)
 	return (ans);
 }
 
-void	parse(int *n, char *c, char **map)
+void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 {
-	int		ct[2];
-	char	*t;
+	unsigned int	ct[2];
+	unsigned char	*t;
 
 	*n = read_int();
 	read(0, c, 2);
-	*map = malloc(*n * (1 + *n) * sizeof(char));
+	*map = malloc(*n * (1 + *n) * sizeof(unsigned char));
 	t = map[0];
 	ct[1] = *n * (1 + *n) - 1;
 	while (ct[1] > 0)
@@ -46,10 +46,11 @@ void	parse(int *n, char *c, char **map)
 	}
 }
 
-void	print_ans(int n, char c, char *map, int target[2])
+void	print_ans(unsigned int n, unsigned char c,
+unsigned char *map, unsigned int target[2])
 {
-	int		ct[2];
-	char	*t;
+	unsigned int	ct[2];
+	unsigned char	*t;
 
 	ct[0] = -1;
 	while (++ct[0] < target[1])

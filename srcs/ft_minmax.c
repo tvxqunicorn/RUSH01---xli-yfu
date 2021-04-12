@@ -6,20 +6,20 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:31:33 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 12:32:22 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 23:01:58 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ofc.h"
 
-int	ft_min(int a, int b, int c)
+unsigned int	ft_min(unsigned int a,
+unsigned int b, unsigned int c)
 {
 	if (a < b)
 	{
 		if (a < c)
 			return (a);
-		else
-			return (c);
+		return (c);
 	}
 	if (b < c)
 		return (b);

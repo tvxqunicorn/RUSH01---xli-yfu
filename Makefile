@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+         #
+#    By: yfu <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 21:41:31 by xli               #+#    #+#              #
-#    Updated: 2021/04/09 23:25:24 by xli              ###   ########lyon.fr    #
+#    Updated: 2021/04/12 22:08:07 by yfu              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = rush
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I includes -g
+CFLAGS = -Wall -Wextra -Werror -I includes
 
 SRCS = ./srcs/main.c ./srcs/parse.c	./srcs/ft_minmax.c
 
