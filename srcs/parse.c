@@ -18,9 +18,8 @@ void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 	unsigned char	*t;
 
 	*n = 0;
-	while (1)
+	while (read(0, c, 1))
 	{
-		read(0, c, 1);
 		if (*c == '\n')
 			break ;
 		*n = 10 * *n + *c - '0';
