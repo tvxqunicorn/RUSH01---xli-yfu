@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/13 10:30:54 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 11:13:01 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,22 @@ void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 	}
 }
 
-void	print_ans(unsigned int n, unsigned char c,
-unsigned char *map, unsigned int target[2])
+void	print_ans(unsigned int n[3], unsigned char c,
+unsigned char *map, unsigned char *pos)
 {
 	unsigned int	ct[2];
 	unsigned char	*t;
 
 	ct[0] = -1;
-	t = map + target[0] + 1;
-	while (++ct[0] < target[1])
+	t = pos + 1;
+	while (++ct[0] < n[2])
 	{
 		ct[1] = -1;
-		while (++ct[1] < target[1])
+		while (++ct[1] < n[2])
 			*(--t) = c;
-		t -= n + 1 - target[1];
+		t -= n[1] - n[2];
 	}
-	ct[0] = n * (n + 1) - 1;
+	ct[0] = n[0] * n[1] - 1;
 	t = map;
 	while (ct[0] > 0)
 	{
