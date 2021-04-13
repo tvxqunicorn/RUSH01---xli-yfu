@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/12 23:21:12 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 10:30:54 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 
 	*n = read_int();
 	read(0, c, 2);
-	*map = malloc(*n * (1 + *n) * sizeof(unsigned char));
-	t = map[0];
 	ct[1] = *n * (1 + *n) - 1;
+	*map = malloc((ct[1] + 1) * sizeof(unsigned char));
+	t = map[0];
 	while (ct[1] > 0)
 	{
 		ct[0] = read(0, t, ct[1]);
