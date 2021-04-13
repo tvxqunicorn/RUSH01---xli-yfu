@@ -30,7 +30,7 @@ unsigned int n[3], unsigned char **pos)
 				*dp = 1;
 			if (*dp > n[2])
 			{
-				n[2] = *dp;
+				++n[2];
 				*pos = map;
 			}
 			++dp;
