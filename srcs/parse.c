@@ -52,14 +52,18 @@ unsigned char *map, unsigned char *pos)
 	unsigned int	ct[2];
 	unsigned char	*t;
 
-	ct[0] = -1;
+	ct[0] = 0;
 	t = pos + 1;
-	while (++ct[0] < n[2])
+	while (ct[0] < n[2])
 	{
-		ct[1] = -1;
-		while (++ct[1] < n[2])
+		ct[1] = 0;
+		while (ct[1] < n[2])
+		{
 			*(--t) = c;
+			++ct[1];
+		}
 		t -= n[1] - n[2];
+		++ct[0];
 	}
 	ct[0] = n[0] * n[1] - 1;
 	t = map;
