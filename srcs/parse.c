@@ -12,28 +12,19 @@
 
 #include "ofc.h"
 
-unsigned int	read_int(void)
-{
-	unsigned int	ans;
-	unsigned char	c;
-
-	ans = 0;
-	while (1)
-	{
-		read(0, &c, 1);
-		if (c == '\n')
-			return (ans);
-		ans = 10 * ans + c - '0';
-	}
-	return (ans);
-}
-
 void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 {
 	unsigned int	ct[2];
 	unsigned char	*t;
 
-	*n = read_int();
+	*n = 0;
+	while (1)
+	{
+		read(0, c, 1);
+		if (*c == '\n')
+			break ;
+		*n = 10 * *n + *c - '0';
+	}
 	read(0, c, 2);
 	ct[1] = *n * (1 + *n) - 1;
 	*map = malloc(ct[1] + 1);
