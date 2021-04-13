@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I includes
 
-SRCS = ./srcs/main.c ./srcs/parse.c	./srcs/ft_minmax.c
+SRCS = ./srcs/main.c ./srcs/parse.c
 
 HEADER = ./includes/
 

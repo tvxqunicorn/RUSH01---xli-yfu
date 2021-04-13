@@ -18,26 +18,27 @@ unsigned int n[3], unsigned char **pos)
 	unsigned int	ct[2];
 
 	ct[0] = 0;
-	while (++ct[0] < n[0])
+	while (++ct[0] < n[0] && ++dp && ++map && ++map)
 	{
 		ct[1] = 0;
-		while (++ct[1] < n[0])
+		while (++ct[1] < n[0] && ++dp && ++map)
 		{
 			if (*map == *(map - 1) && *map == *(map - n[1])
 				&& *map == *(map - 1 - n[1]))
-				*dp = 1 + ft_min(*(dp - 1), *(dp - n[0]), *(dp - n[1]));
+			{
+				*dp = 1 + *(dp - 1);
+				if (*dp > 1 + *(dp - n[0]))
+					*dp = 1 + *(dp - n[0]);
+				if (*dp > 1 + *(dp - n[1]))
+					*dp = 1 + *(dp - n[1]);
+			}
 			else
 				*dp = 1;
-			if (*dp > n[2])
-			{
-				++n[2];
+			if (*dp == ++n[2])
 				*pos = map;
-			}
-			++dp;
-			++map;
+			else
+				--n[2];
 		}
-		++dp;
-		map += 2;
 	}
 }
 
@@ -57,7 +58,7 @@ void	solve(unsigned int n[3], unsigned char *map, unsigned char **pos)
 		temp[1] += n[0];
 	}
 	n[1] = n[0] + 1;
-	sub_solve(dp + n[1], map + n[1] + 1, n, pos);
+	sub_solve(dp + n[0] - 1, map + n[0] - 1, n, pos);
 	free(dp);
 }
 

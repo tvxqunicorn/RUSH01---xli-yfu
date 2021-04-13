@@ -18,6 +18,5 @@
 void			parse(unsigned int *n, unsigned char *c, unsigned char **map);
 void			print_ans(unsigned int n[3], unsigned char c,
 					unsigned char *m, unsigned char *pos);
-unsigned int	ft_min(unsigned int a, unsigned int b, unsigned int c);
 
 #endif
