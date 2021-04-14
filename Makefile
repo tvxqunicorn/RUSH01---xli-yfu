@@ -6,7 +6,7 @@
 #    By: yfu <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 21:41:31 by xli               #+#    #+#              #
-#    Updated: 2021/04/12 22:08:07 by yfu              ###   ########lyon.fr    #
+#    Updated: 2021/04/14 15:21:01 by yfu              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I includes
 
-SRCS = ./srcs/main.c ./srcs/parse.c
+SRCS = ./srcs/main.c
 
 HEADER = ./includes/
 
