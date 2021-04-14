@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/13 12:18:31 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 15:09:00 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sub_solve(unsigned int *dp, unsigned char *map,
 unsigned int n[3], unsigned char **pos)
 {
-	unsigned int	ct[2];
+	register unsigned int	ct[2];
 
 	ct[0] = 0;
 	while (++ct[0] < n[0] && ++dp && ++map && ++map)
@@ -44,8 +44,8 @@ unsigned int n[3], unsigned char **pos)
 
 void	solve(unsigned int n[3], unsigned char *map, unsigned char **pos)
 {
-	unsigned int	*dp;
-	unsigned int	*temp[2];
+	register unsigned int	*dp;
+	register unsigned int	*temp[2];
 
 	dp = malloc(n[0] * n[0] * 4);
 	temp[0] = dp;

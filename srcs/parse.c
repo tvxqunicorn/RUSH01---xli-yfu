@@ -6,7 +6,7 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 21:57:41 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/13 12:18:53 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 15:09:22 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 {
-	unsigned int	ct[2];
-	unsigned char	*t;
+	register unsigned int	ct[2];
+	register unsigned char	*t;
 
 	*n = 0;
 	while (read(0, c, 1))
@@ -39,8 +39,8 @@ void	parse(unsigned int *n, unsigned char *c, unsigned char **map)
 void	print_ans(unsigned int n[3], unsigned char c,
 unsigned char *map, unsigned char *pos)
 {
-	unsigned int	ct[2];
-	unsigned char	*t;
+	register unsigned int	ct[2];
+	register unsigned char	*t;
 
 	ct[0] = 0;
 	t = pos + 1;
