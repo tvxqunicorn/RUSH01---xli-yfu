@@ -6,13 +6,14 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/14 15:22:44 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 15:59:26 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ofc.h"
 
-void	parse(register unsigned int *n, unsigned char *c, unsigned char **map)
+static inline void	parse(register unsigned int *n, unsigned char *c,
+unsigned char **map)
 {
 	register unsigned int	ct[2];
 	register unsigned char	*t;
@@ -36,7 +37,7 @@ void	parse(register unsigned int *n, unsigned char *c, unsigned char **map)
 	}
 }
 
-void	print_ans(unsigned int n[3], unsigned char c,
+static inline void	print_ans(unsigned int n[3], unsigned char c,
 unsigned char *map, unsigned char *pos)
 {
 	register unsigned int	ct[2];
@@ -66,8 +67,8 @@ unsigned char *map, unsigned char *pos)
 	write(1, "\n", 1);
 }
 
-void	sub_solve(register unsigned int *dp, register unsigned char *map,
-unsigned int n[3], unsigned char **pos)
+static inline void	sub_solve(register unsigned int *dp,
+register unsigned char *map, unsigned int n[3], unsigned char **pos)
 {
 	register unsigned int	ct[2];
 
@@ -96,7 +97,8 @@ unsigned int n[3], unsigned char **pos)
 	}
 }
 
-void	solve(unsigned int n[3], unsigned char *map, unsigned char **pos)
+static inline void	solve(unsigned int n[3], unsigned char *map,
+unsigned char **pos)
 {
 	unsigned int			*dp;
 	register unsigned int	*temp[2];
