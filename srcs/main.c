@@ -6,28 +6,19 @@
 /*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:59:29 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/14 15:59:26 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 20:50:42 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ofc.h"
 
-static inline void	parse(register unsigned int *n, unsigned char *c,
-unsigned char **map)
+static inline void	parse(register unsigned int n, register unsigned char **map)
 {
 	register unsigned int	ct[2];
 	register unsigned char	*t;
 
-	*n = 0;
-	while (read(0, c, 1))
-	{
-		if (*c == '\n')
-			break ;
-		*n = 10 * *n + *c - '0';
-	}
-	read(0, c, 2);
-	ct[1] = *n * (1 + *n) - 1;
-	*map = malloc(ct[1] + 1);
+	ct[1] = n * (1 + n) - 1;
+	map[0] = malloc(ct[1] + 1);
 	t = map[0];
 	while (ct[1] > 0)
 	{
@@ -37,8 +28,9 @@ unsigned char **map)
 	}
 }
 
-static inline void	print_ans(unsigned int n[3], unsigned char c,
-unsigned char *map, unsigned char *pos)
+static inline void	print_ans(register unsigned int n[3],
+register unsigned char c, register unsigned char *map,
+register unsigned char *pos)
 {
 	register unsigned int	ct[2];
 	register unsigned char	*t;
@@ -68,7 +60,8 @@ unsigned char *map, unsigned char *pos)
 }
 
 static inline void	sub_solve(register unsigned int *dp,
-register unsigned char *map, unsigned int n[3], unsigned char **pos)
+register unsigned char *map, register unsigned int n[3],
+register unsigned char **pos)
 {
 	register unsigned int	ct[2];
 
@@ -78,29 +71,29 @@ register unsigned char *map, unsigned int n[3], unsigned char **pos)
 		ct[1] = 0;
 		while (++ct[1] < n[0] && ++dp && ++map)
 		{
-			if (*map == *(map - 1) && *map == *(map - n[1])
-				&& *map == *(map - 1 - n[1]))
+			if (map[0] == *(map - 1) && map[0] == *(map - n[1])
+				&& map[0] == *(map - 1 - n[1]))
 			{
-				*dp = 1 + *(dp - 1);
-				if (*dp > 1 + *(dp - n[0]))
-					*dp = 1 + *(dp - n[0]);
-				if (*dp > 1 + *(dp - n[1]))
-					*dp = 1 + *(dp - n[1]);
+				dp[0] = 1 + *(dp - 1);
+				if (dp[0] > 1 + *(dp - n[0]))
+					dp[0] = 1 + *(dp - n[0]);
+				if (dp[0] > 1 + *(dp - n[1]))
+					dp[0] = 1 + *(dp - n[1]);
 			}
 			else
-				*dp = 1;
-			if (*dp == ++n[2])
-				*pos = map;
+				dp[0] = 1;
+			if (dp[0] == ++n[2])
+				pos[0] = map;
 			else
 				--n[2];
 		}
 	}
 }
 
-static inline void	solve(unsigned int n[3], unsigned char *map,
-unsigned char **pos)
+static inline void	solve(register unsigned int n[3],
+register unsigned char *map, register unsigned char **pos)
 {
-	unsigned int			*dp;
+	register unsigned int	*dp;
 	register unsigned int	*temp[2];
 
 	dp = malloc(n[0] * n[0] * 4);
@@ -125,7 +118,15 @@ int	main(void)
 	unsigned char	*map;
 	unsigned char	*pos;
 
-	parse(n, c, &map);
+	n[0] = 0;
+	while (read(0, c, 1))
+	{
+		if (c[0] == '\n')
+			break ;
+		n[0] = 10 * n[0] + c[0] - '0';
+	}
+	read(0, c, 2);
+	parse(n[0], &map);
 	n[1] = n[0] + 1;
 	n[2] = 1;
 	pos = map;
